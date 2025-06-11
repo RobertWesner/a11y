@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        {% include '/base/head.twig' with { 'title': 'ARIA label and description' } %}
+    </head>
+    <body>
+        <main class="container">
+            <h1>ARIA label and description</h1>
+            <article>
+                <h2>ARIA labels</h2>
+                <section>
+                    <h3><code>aria-label</code></h3>
+                    {% include '/components/wip.twig' with { alternative: { name: 'The MDN web docs', link: 'https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-label' }} %}
+                </section>
+                <section>
+                    <h3><code>aria-labelledby</code></h3>
+                    {% include '/components/wip.twig' with { alternative: { name: 'The MDN web docs', link: 'https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-labelledby' }} %}
+                </section>
+            </article>
+            <article>
+                <h2>ARIA Descriptions</h2>
+                <section>
+                    <h3><code>aria-description</code></h3>
+                    <p>
+                        ARIA description is in the draft for ARIA 1.3, which is unreleased and thus not supported yet.
+                    </p>
+                </section>
+                <section>
+                    <h3><code>aria-describedby</code></h3>
+                    <p>The <code>aria-describedby</code> attribute is used to link longer information text to an element.</p>
+                    <p>
+                        This description does not replace an <code>aria-label</code> or <code>aria-labelledby</code>, both serve slightly different purposes.
+                        A description can be used with or without an aria label and will always be announced after the label or text content was.
+                    </p>
+                    <p>
+                        To make sure the screen reader does not repeat the content of the description right after it was read from the button,
+                        you should hide the description itself from the accessibility tree with <code>aria-hidden="true"</code>.
+                    </p>
+                    {% include '/components/read.twig' with { audio: 'label-description/describedby', text: 'described by example' } %}
+                    {% include '/components/example.twig' with { language: 'html', code:
+'<button aria-describedby="save-information">Save</button>
+<div id="save-information" aria-hidden="true">
+    Everything Not Saved Will Be Lost.
+</div>'
+                    } %}
+                    <p>
+                        You can specify multiple descriptions in the <code>aria-describedby</code> attribute by separating them with whitespaces,
+                        similar to specifying multiple label parts in <code>aria-labelledby</code>.
+                    </p>
+                    {% include '/components/read.twig' with { audio: 'label-description/describedbymultipleparts', text: 'described by example with multiple descriptions' } %}
+                    {% include '/components/example.twig' with { language: 'html', code:
+'<button
+    aria-label="Button that does something"
+    aria-describedby="abc-description1 abc-description2 abc-description3"
+>
+    Do something
+</button>
+<div id="abc-description1" aria-hidden="true">
+    Description Part1.
+</div>
+<div id="abc-description2" aria-hidden="true">
+    Description Part2.
+</div>
+<div id="abc-description3" aria-hidden="true">
+    Description Part3.
+</div>'
+                    } %}
+                </section>
+            </article>
+            <article>
+                <h2>ARIA Label Example With Social Media Icons</h2>
+                <p>
+                    Here I will guide you through the process of making social media links more accessible.
+                    We will start with the worst-case scenario and work towards a decent design.
+                </p>
+                <section>
+                    <h3>Plain Icons {% include '/components/practice.twig' with { practice: 'bad' } %}</h3>
+                    <p>
+                        The most minimal display of social media links can be achieved with icons.
+                        This has <strong>absolutely no accessibility</strong>, as the links will just be announced as "link".
+                    </p>
+                    {% include '/components/read.twig' with { audio: 'label-description/plainicons', text: 'plain icons example' } %}
+                    {% include '/components/example.twig' with { language: 'html', code:
+'My social media:
+<a href="https://github.com/RobertWesner" style="display: block;">
+    <i class="fa-brands fa-github fa-3x"></i>
+</a>
+<a href="https://reddit.com/u/RobertWesner" style="display: block;">
+    <i class="fa-brands fa-reddit fa-3x"></i>
+</a>'
+                        } %}
+                </section>
+                <section>
+                    <h3>Icons With Text {% include '/components/practice.twig' with { practice: 'ok' } %}</h3>
+                    <p>
+                        Icons with additional text have the benefit of being properly announced by a screen reader
+                        and allow people unfamiliar with the icon to still understand the targeted website's name.
+                    </p>
+                    <p>
+                        One problem with this is the lack of specificity. A person using a screen reader will only hear
+                        "link GitHub", which could as well just link to the main page of that website rather than a specific profile.
+                        A sighted person could infer by the above text ("My social media") that the links lead to your individual page.
+                    </p>
+                    {% include '/components/read.twig' with { audio: 'label-description/iconswithtext', text: 'icons with text example' } %}
+                    {% include '/components/example.twig' with { language: 'html', code:
+'My social media:
+<a href="https://github.com/RobertWesner" style="display: block;">
+    <i class="fa-brands fa-github"></i> GitHub
+</a>
+<a href="https://reddit.com/u/RobertWesner" style="display: block;">
+    <i class="fa-brands fa-reddit"></i> Reddit
+</a>'
+                        } %}
+                </section>
+                <section>
+                    <h3>Plain Icons With ARIA-Label {% include '/components/practice.twig' with { practice: 'good' } %}</h3>
+                    <p>
+                        Just adding an <code>aria-label</code> to each icon is a major step up from the complete lack of accessibility we previously had,
+                        and using more complete information like "My [platform] Profile" makes it clearer to which part of a site the link leads.
+                    </p>
+                    <p>
+                        This can be <i>enough</i> if your goal is to keep the minimal design but still excludes
+                        sighted people having limited familiarity with these platforms and their icons.
+                        They may know what GitHub and Reddit <i>are</i> but may be unaware of how their <i>branding looks</i>.
+                    </p>
+                    {% include '/components/read.twig' with { audio: 'label-description/plainiconswitharialabel', text: 'plain icons with aria-label example' } %}
+                    {% include '/components/example.twig' with { language: 'html', code:
+'My social media:
+<a
+    href="https://github.com/RobertWesner"
+    style="display: block;"
+    aria-label="My GitHub profile"
+>
+    <i class="fa-brands fa-github fa-3x"></i>
+</a>
+<a
+    href="https://reddit.com/u/RobertWesner"
+    style="display: block;"
+    aria-label="My Reddit profile"
+>
+    <i class="fa-brands fa-reddit fa-3x"></i>
+</a>'
+                        } %}
+                </section>
+                <section>
+                    <h3>Icons With ARIA-Label And Text {% include '/components/practice.twig' with { practice: 'best' } %}</h3>
+                    <p>
+                        Combining the previous two examples, we both apply an <code>aria-label</code> and provide text representations of the icons.
+                    </p>
+                    {% include '/components/read.twig' with { audio: 'label-description/iconswitharialabelandtext', text: 'plain icons with aria-label example' } %}
+                    {% include '/components/example.twig' with { language: 'html', code:
+'My social media:
+<a
+    href="https://github.com/RobertWesner"
+    style="display: block;"
+    aria-label="My GitHub profile"
+>
+    <i class="fa-brands fa-github"></i> GitHub
+</a>
+<a
+    href="https://reddit.com/u/RobertWesner"
+    style="display: block;"
+    aria-label="My Reddit profile"
+>
+    <i class="fa-brands fa-reddit"></i> Reddit
+</a>'
+                        } %}
+                </section>
+                {% include '/components/info.twig' with { content:
+'<div>
+    Altough my testing with modern systems and browsers has shown fontawesome icons not being announced incorrectly as they have an empty text content,
+    it is generally considered to be best practice to add <code>aria-hidden="true"</code> to all decorative icons.
+</div>
+<div>
+    Other icon libraries might rely on alphanumeric symbols (or other text characters) with custom fonts to be stylized.
+    Those would be pronounced as the actual character.
+    A very unlikely but still effective example would be Wingdings <span style="font-family: Wingdings" aria-label="thumbs up">C</span> pronounced as the letter "C".
+</div>
+<div>
+    When in doubt, use the accessibility tree to view the extracted text content.
+</div>'
+                    } %}
+            </article>
+        </main>
+    </body>
+</html>

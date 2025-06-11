@@ -1,0 +1,11 @@
+<!-- only used as placeholder, so I did not include it in my main css -->
+<div style="background-color: bisque; color: #3d382d; border: 1px solid #3d382d; border-radius: 1rem; padding: 1rem">
+    <strong style="text-transform: uppercase">Work in progress</strong>
+    <p style="margin-bottom: 0">
+        This section is under construction and will be finished in due time.
+        {% if alternative is defined %}
+            <br>
+            Please have a look at <a href="{{ alternative.link }}">{{ alternative.name }}</a> for further information on this topic.
+        {% endif %}
+    </p>
+</div>

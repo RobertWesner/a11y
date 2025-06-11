@@ -1,0 +1,22 @@
+<div class="read">
+    {% set idSuffix = audio|replace({ '/': '-' }) %}
+    <label>
+        Play Screen Reader:
+        <button id="read-btn-{{ idSuffix }}" aria-label="Play {{ text }}">
+            <i class="fa-solid fa-headphones"></i> Play
+        </button>
+    </label>
+    <audio id="read-audio-{{ idSuffix }}">
+        <source src="/mp3/{{ audio }}.mp3" type="audio/mpeg">
+    </audio>
+    <script>
+        document.querySelector('#read-btn-{{ idSuffix }}').addEventListener('click', () => {
+            const audio = document.querySelector('#read-audio-{{ idSuffix }}');
+            audio.currentTime = 0;
+            audio.play();
+        });
+    </script>
+    <noscript>
+        Please enable JavaScript to play screen reader samples.
+    </noscript>
+</div>

@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        {% include '/base/head.twig' %}
+        <style>
+            body {
+                font-family: sans-serif;
+                margin: 0;
+                height: 100vh;
+                display: flex;
+                flex-direction: column;
+                text-align: center;
+            }
+
+            main {
+                flex-grow: 1;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+            }
+        </style>
+    </head>
+    <body style="background-color: {{ background }}">
+        <main>
+            <h1>A11y</h1>
+            <p>This website is currently in development.</p>
+            <p>While I wrap things up, feel free to read the following articles:</p>
+            <ul>
+                <li>
+                    <a href="/aria/label-description">Aria Labels And Descriptions</a>
+                </li>
+            </ul>
+        </main>
+    </body>
+</html>

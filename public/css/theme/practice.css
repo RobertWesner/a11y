@@ -1,0 +1,27 @@
+.practice {
+    padding: 0.2rem;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    vertical-align: middle;
+    border-radius: 0.26rem;
+}
+
+.practice.bad {
+    background-color: #8e0000;
+    color: #fff6f6;
+}
+
+.practice.ok {
+    background-color: #b3ae00;
+    color: #ffffff;
+}
+
+.practice.good {
+    background-color: #7eb800;
+    color: #e4ffc1;
+}
+
+.practice.best {
+    background-color: #006100;
+    color: #c1ffc1;
+}

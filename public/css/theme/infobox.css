@@ -1,0 +1,17 @@
+.infobox {
+    padding: 1rem;
+    background-color: #9ad8ff;
+    color: #031c3a;
+    border: 1px solid #031c3a;
+    margin-top: 0.6rem;
+    margin-bottom: 0.6rem;
+    border-radius: 1rem;
+}
+
+.infobox .title {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    font-weight: bold;
+    margin-bottom: 0.6rem;
+    display: block;
+}

@@ -17,4 +17,9 @@
     flex: 1;
     overflow: auto;
     margin: 0;
+    border: 1px solid #c5c5c5;
+}
+
+.example > .source code {
+    background-color: #fcfcfc;
 }

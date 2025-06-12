@@ -1,0 +1,18 @@
+#bypass-block:not(:focus) {
+    font-size: 0;
+    color: transparent;
+    user-select: none;
+    position: fixed;
+    top: -100%;
+}
+
+#bypass-block:focus {
+    position: static;
+    color: blue;
+    background-color: #f6fff7;
+    font-weight: bold;
+    font-size: 1.6rem;
+    padding: 2rem;
+    display: block;
+    text-align: center;
+}

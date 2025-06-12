@@ -6,14 +6,9 @@ $server = [
     'uri' => $_SERVER['REQUEST_URI'],
 ];
 
-Route::get('/', function () use ($server) {
-    return Route::render('index.twig', ['server' => $server]);
-});
+Route::get('/', fn () => Route::render('index.twig', ['server' => $server]));
+Route::get('/articles/?', fn () => Route::render('articles.twig', ['server' => $server]));
 
-Route::get('/aria/label-description/?', function () use ($server) {
-    return Route::render('aria/label-description.twig', ['server' => $server]);
-});
+Route::get('/articles/aria/label-description/?', fn () => Route::render('articles/aria/label-description.twig', ['server' => $server]));
 
-Route::get(Route::FALLBACK, function () {
-    return Route::render('404.twig', status: 404);
-});
+Route::get(Route::FALLBACK, fn () => Route::render('404.twig', status: 404));

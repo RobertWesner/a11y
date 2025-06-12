@@ -2,34 +2,14 @@
 <html lang="en">
     <head>
         {% include '/base/head.twig' %}
-        <style>
-            body {
-                font-family: sans-serif;
-                margin: 0;
-                height: 100vh;
-                display: flex;
-                flex-direction: column;
-                text-align: center;
-            }
-
-            main {
-                flex-grow: 1;
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-            }
-        </style>
     </head>
-    <body style="background-color: {{ background }}">
-        <main>
-            <h1>A11y</h1>
+    <body>
+        {% include '/components/bypassblock.twig' %}
+        {% include '/components/nav.twig' %}
+        <main id="main" class="container">
+            <h1>Accessibility</h1>
             <p>This website is currently in development.</p>
-            <p>While I wrap things up, feel free to read the following articles:</p>
-            <ul>
-                <li>
-                    <a href="/aria/label-description">Aria Labels And Descriptions</a>
-                </li>
-            </ul>
+            <p>While I wrap things up, feel free to read one of the <a href="/articles/">articles</a></p>
         </main>
     </body>
 </html>

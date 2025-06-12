@@ -5,4 +5,22 @@
 .read button {
     padding: 0.2rem;
     font-size: 0.8rem;
+    background-color: #e7e7e7;
+    color: black;
+    border: 1px solid black;
+    border-radius: 0.4rem;
+}
+
+.read button:hover, .read button:focus {
+    background-color: #f1f1f1;
+}
+
+.read button:active {
+    background-color: #dadada;
+}
+
+.read .descriptor {
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.8rem;
 }

@@ -1,1 +1,2 @@
-<span class="practice {{ practice }}" aria-label="this is {{ practice }} practice">{{ practice }}</span>
+{% set r = random(1, 1000000) %}
+<span role="presentation" class="practice {{ practice }}"><span class="visually-hidden">. this is </span>{{ practice }}<span class="visually-hidden"> practice.</span></span>

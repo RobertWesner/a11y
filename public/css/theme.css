@@ -3,6 +3,8 @@
 @import '/css/theme/practice.css';
 @import '/css/theme/read.css';
 @import '/css/theme/infobox.css';
+@import '/css/theme/bypass-block.css';
+@import '/css/theme/nav.css';
 
 * {
     box-sizing: border-box;
@@ -22,6 +24,12 @@ body {
 .container {
     max-width: 1400px;
     margin: 0 auto;
+}
+
+.visually-hidden {
+    font-size: 0;
+    user-select: none;
+    color: transparent;
 }
 
 @media only screen and (max-width: 1000px) {

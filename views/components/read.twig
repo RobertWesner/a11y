@@ -1,7 +1,7 @@
 <div class="read">
     {% set idSuffix = audio|replace({ '/': '-' }) %}
     <label>
-        Play Screen Reader:
+        <span class="descriptor">Play Screen Reader:</span>
         <button id="read-btn-{{ idSuffix }}" aria-label="Play {{ text }}">
             <i class="fa-solid fa-headphones"></i> Play
         </button>

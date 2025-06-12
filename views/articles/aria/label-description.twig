@@ -4,17 +4,107 @@
         {% include '/base/head.twig' with { 'title': 'ARIA label and description' } %}
     </head>
     <body>
-        <main class="container">
+        {% include '/components/bypassblock.twig' %}
+        {% include '/components/nav.twig' %}
+        <main id="main" class="container">
             <h1>ARIA label and description</h1>
             <article>
                 <h2>ARIA labels</h2>
                 <section>
                     <h3><code>aria-label</code></h3>
-                    {% include '/components/wip.twig' with { alternative: { name: 'The MDN web docs', link: 'https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-label' }} %}
+                    <p>Without the use of an ARIA label, the text content of an element is used to represent said element by a screen reader.</p>
+                    <p>
+                        Without further modification, all elements (text, buttons, links, inputs, and more) will be read
+                        by the screen reader based on their text while also announcing the type of interaction if they are interactive.
+                        This, of course, can be great if your text content already provides all the details necessary to understand it,
+                        but our buttons are rather bare-bones.
+                    </p>
+                    <p>
+                        Since the text "Image:" will not be announced when manually navigating between the buttons, as with tab navigation,
+                        the buttons are only known as "Save", "Save As", and "Load" to people reliant on screen readers.
+                    </p>
+                    {% include '/components/read.twig' with { audio: 'label-description/imagenoarialabel', text: 'no aria label example' } %}
+                    {% include '/components/example.twig' with { language: 'html', code:
+'Image:
+<button>Save</button>
+<button>Save As</button>
+<button>Load</button>'
+                    } %}
+                    <p>
+                        To make them more accessible, we can simply add an ARIA label to each of the buttons with a more descriptive name,
+                        like "Save image". This way, any navigation between the buttons will result in the screen reader announcing the buttons
+                        with their intended purpose. It is very helpful when different parts of your website provide similar actions with
+                        the same visible text but operate in different context, like "Save image" in the image section and "Save audio" in the
+                        sound section of a video editing tool.
+                    </p>
+                    {% include '/components/read.twig' with { audio: 'label-description/imagewitharialabel', text: 'no aria label example' } %}
+                    {% include '/components/example.twig' with { language: 'html', code:
+'Image:
+<button aria-label="Save image">
+    Save
+</button>
+<button aria-label="Save image with different filename">
+    Save As
+</button>
+<button aria-label="Load image">
+    Load
+</button>'
+                    } %}
+                    {% include '/components/info.twig' with { content:
+'<div>
+    Generic elements, such as div and span, <strong>must not</strong> have an <code>aria-label</code> or <code>aria-labelledby</code>.
+</div>'
+                    } %}
                 </section>
                 <section>
                     <h3><code>aria-labelledby</code></h3>
-                    {% include '/components/wip.twig' with { alternative: { name: 'The MDN web docs', link: 'https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-labelledby' }} %}
+                    <p>
+                        The <code>aria-labelledby</code> attribute has similar use as <code>aria-label</code>.
+                        Rather than specifying an explicit name for an element, it references another element (or multiple elements) containing the name.
+                    </p>
+                    {% include '/components/read.twig' with { audio: 'label-description/toggledarkmode', text: 'labelled by example' } %}
+                    {% include '/components/example.twig' with { language: 'html', code:
+'<span id="dark-mode-label">
+    Toggle darkmode
+</span>
+<input type="checkbox" aria-labelledby="dark-mode-label">'
+                    } %}
+                    <p>Keep in mind, this functionality can easily be provided with native label elements</p>
+                    {% include '/components/read.twig' with { audio: 'label-description/toggledarkmodelabel', text: 'native label example' } %}
+                    {% include '/components/example.twig' with { language: 'html', code:
+'<label for="dark-mode-toggle">
+    Toggle darkmode
+</span>
+<input id="dark-mode-toggle" type="checkbox">'
+                    } %}
+                    <p>
+                        As stated, it is possible to use multiple elements in the labelledby attribute.
+                        Simply write your target element IDs separated by a whitespace.
+                        The advantage of this is the ability to change individual parts of the message,
+                        like an item count, using JavaScript without rewriting the entire label.
+                    </p>
+                    <p>
+                        It can be desirable to hide the elements used as labelledby
+                        to prevent unintended narration of the content.
+                    </p>
+                    {% include '/components/read.twig' with { audio: 'label-description/shoppingcart', text: 'labelled by multiple example' } %}
+                    {% include '/components/example.twig' with { language: 'html', code:
+'<button aria-labelledby="shopping-cart-text-1 shopping-cart-items shopping-cart-text-2">
+    <i class="fa-solid fa-cart-shopping"></i>
+</button>
+<div hidden>
+    <span id="shopping-cart-text-1">
+        You have
+    </span>
+    <span id="shopping-cart-items">
+        4
+    </span>
+    <span id="shopping-cart-text-2">
+        items in your shopping cart.
+    </span>
+</div>
+'
+                    } %}
                 </section>
             </article>
             <article>
@@ -22,14 +112,14 @@
                 <section>
                     <h3><code>aria-description</code></h3>
                     <p>
-                        ARIA description is in the draft for ARIA 1.3, which is unreleased and thus not supported yet.
+                        ARIA description is in the draft for ARIA 1.3, which is unreleased and not supported yet.
                     </p>
                 </section>
                 <section>
                     <h3><code>aria-describedby</code></h3>
                     <p>The <code>aria-describedby</code> attribute is used to link longer information text to an element.</p>
                     <p>
-                        This description does not replace an <code>aria-label</code> or <code>aria-labelledby</code>, both serve slightly different purposes.
+                        This description does not replace an <code>aria-label</code> or <code>aria-labelledby</code>.
                         A description can be used with or without an aria label and will always be announced after the label or text content was.
                     </p>
                     <p>
@@ -44,7 +134,7 @@
 </div>'
                     } %}
                     <p>
-                        You can specify multiple descriptions in the <code>aria-describedby</code> attribute by separating them with whitespaces,
+                        You can specify multiple descriptions in the <code>aria-describedby</code> attribute by separating them with whitespace,
                         similar to specifying multiple label parts in <code>aria-labelledby</code>.
                     </p>
                     {% include '/components/read.twig' with { audio: 'label-description/describedbymultipleparts', text: 'described by example with multiple descriptions' } %}
@@ -119,8 +209,8 @@
                         and using more complete information like "My [platform] Profile" makes it clearer to which part of a site the link leads.
                     </p>
                     <p>
-                        This can be <i>enough</i> if your goal is to keep the minimal design but still excludes
-                        sighted people having limited familiarity with these platforms and their icons.
+                        This can be <i>enough</i> if your goal is to keep the minimal design but still might be less accessible
+                        even to sighted people having limited familiarity with these platforms and their icons.
                         They may know what GitHub and Reddit <i>are</i> but may be unaware of how their <i>branding looks</i>.
                     </p>
                     {% include '/components/read.twig' with { audio: 'label-description/plainiconswitharialabel', text: 'plain icons with aria-label example' } %}
@@ -155,31 +245,31 @@
     style="display: block;"
     aria-label="My GitHub profile"
 >
-    <i class="fa-brands fa-github"></i> GitHub
+    <i class="fa-brands fa-github" aria-hidden="true"></i> GitHub
 </a>
 <a
     href="https://reddit.com/u/RobertWesner"
     style="display: block;"
     aria-label="My Reddit profile"
 >
-    <i class="fa-brands fa-reddit"></i> Reddit
+    <i class="fa-brands fa-reddit" aria-hidden="true"></i> Reddit
 </a>'
                         } %}
-                </section>
-                {% include '/components/info.twig' with { content:
-'<div>
+                    {% include '/components/info.twig' with { content:
+                        '<div>
     Altough my testing with modern systems and browsers has shown fontawesome icons not being announced incorrectly as they have an empty text content,
     it is generally considered to be best practice to add <code>aria-hidden="true"</code> to all decorative icons.
 </div>
 <div>
     Other icon libraries might rely on alphanumeric symbols (or other text characters) with custom fonts to be stylized.
     Those would be pronounced as the actual character.
-    A very unlikely but still effective example would be Wingdings <span style="font-family: Wingdings" aria-label="thumbs up">C</span> pronounced as the letter "C".
+    A very unlikely but still effective example would be Wingdings <span style="font-family: Wingdings">C</span> pronounced as the letter "C".
 </div>
 <div>
-    When in doubt, use the accessibility tree to view the extracted text content.
+    When in doubt, use the accessibility tree to view the text.
 </div>'
                     } %}
+                </section>
             </article>
         </main>
     </body>

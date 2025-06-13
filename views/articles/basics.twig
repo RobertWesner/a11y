@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        {% include '/base/head.twig' with { title: 'Accessibility Basics' } %}
+    </head>
+    <body>
+        {% include '/components/bypassblock.twig' %}
+        {% include '/components/nav.twig' %}
+        <main id="main" class="container">
+            <h1>Accessibility Basics</h1>
+            <article>
+                <section>
+                    <h2>What Is Accessibility?</h2>
+                    <p>
+                        Accessibility (short: a11y) in web development describes the ease of use of a website or web application
+                        no matter the abilities or disabilities of an individual.
+                        It is not just a matter of screen reader support and encompasses many more subjects.
+                        Topics on accessibility include, but are not limited to:
+                    </p>
+                    <ul>
+                        <li>
+                            Vision impairments
+                            <ul>
+                                <li>Partial blindness</li>
+                                <li>Full blindness</li>
+                                <li>Color blindness</li>
+                            </ul>
+                        </li>
+                        <li>Learning disabilities</li>
+                        <li>Motor skill problems</li>
+                        <li>Temporary or permanent loss or lack of arm or hand controls or physical features</li>
+                        <li>Memory loss</li>
+                        <li>Anxiety</li>
+                        <li>Missing association (e.g., unknown meaning of graphics or icons)</li>
+                    </ul>
+                </section>
+                <section>
+                    <h2>Why bother?</h2>
+                    <p>
+                        I recently stumbled upon the question of "do we really need to be accessible" in the context of a bicycle shop.
+                        Since many people with different disabilities, like blindness, cannot engage in driving a bike directly,
+                        the thought of "unnecessary accessibility" may arise.
+                        The issue with this way of thinking is the exclusion of people based on <strong>perceived</strong> lack of customer engagement.
+                    </p>
+                    <p>
+                        Let's add to this example by imagining a parent with visual impairments trying to gather possible gifts for their child.
+                        Said child wishes to have his own blue bicycle for their birthday.
+                        Of course the parent could not use images of those vehicles, or at most only consume them in a limited way with
+                        assistive technology, but with fully accessible websites they could scan for basic descriptions or colors
+                        and compare prices to gather a list of purchases, which can then be refined with either the child themselves,
+                        with the parent's spouse, or a friend. Most of the work was possible without a forced reliance on other people.
+                    </p>
+                    <p>
+                        Without accessible websites, the parent needs to fully depend on another person to guide them through the websites
+                        or delegate the selection of possible gifts entirely.
+                    </p>
+                    <p>
+                        The question of "Why bother?" would in reality mean "Why should we make life easier for others?".
+                        Instead, we should ask, "How can we help?" which leads to quality of life improvements for the abled and disabled.
+                    </p>
+                    <p>
+                        Now with
+                        <a href="https://www.barrierefreiheit-dienstekonsolidierung.bund.de/Webs/PB/DE/gesetze-und-richtlinien/barrierefreiheitsstaerkungsgesetz/barrierefreiheitsstaerkungsgesetz-node.html">legislative changes</a>,
+                        accessibility is a must. But is this enough?
+                        Really, accessibility should not just be something that needs to be <i>enforced</i>.
+                        It should be considered at all points of design and development based on inclusivity,
+                        practiced to help others, not to fulfill legal requirements.
+                    </p>
+                </section>
+                <section>
+                    <h2>Name</h2>
+                    An accessible name is the label used by assistive technology to identify and announce elements on a website.
+                    This should not be confused with the <code>name</code> attribute used in form inputs.
+                </section>
+                <section>
+                    <h2>Accessibility Tree</h2>
+                    <p>
+                        The accessibility tree is available in every modern browser's developer tools.
+                        It is a model of the websites text content excluding elements hidden either entirely visually
+                        or removed with the use of <code>aria-hidden="true"</code>.
+                        Using the accessibility allows you to get a rough estimate on narration results.
+                        It is still recommended to test with real screen readers as the accessibility tree only uses textual representations.
+                    </p>
+                </section>
+                <section>
+                    <h2>Tips</h2>
+                    <ul>
+                        <li>Do not rely on only colors to convey purpose. Use text to describe an element's meaning in addition to color.</li>
+                        <li>Your website design should not only look great and legible when in color but also in grayscale.</li>
+                        <li>Use actual assistive technology to test your website, preferably with multiple tools.</li>
+                        <li>Avoid creating your own elements with spans and divs if semantic HTML equivalents exist.</li>
+                        <li>Always use the alt tag.</li>
+                    </ul>
+                </section>
+                <section>
+                    <h2>Useful tools</h2>
+                    <p>
+                        These are third-party tools. They are not associated with this website or authors, and themselves may be removed or modified at any point.
+                        Make sure to understand a tool, their data collection policies, and other concerns before using them.
+                        Only install or use tools from trusted sources.
+                    </p>
+                    <ul>
+                        <li>
+                            General tools
+                            <ul>
+                                <li><a href="https://webaim.org/resources/contrastchecker/">Contrast checker</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            Chromium extensions
+                            <ul>
+                                <li><a href="https://chromewebstore.google.com/detail/arc-toolkit/chdkkkccnlfncngelccgbgfmjebmkmce">ARC Toolkit for generating accessibility reports</a></li>
+                                <li><a href="https://chromewebstore.google.com/detail/lets-get-color-blind/bkdgdianpkfahpkmphgehigalpighjck">Color blindness simulation</a></li>
+                                <li><a href="https://chromewebstore.google.com/detail/grayscale-screen/mccgphkdghdpebkjkokhbodbjobpihal">Grayscale screen</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </section>
+            </article>
+        </main>
+    </body>
+</html>

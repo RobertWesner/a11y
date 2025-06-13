@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        {% include '/base/head.twig' with { title: 'Accessible Social Media Links' } %}
+    </head>
+    <body>
+        {% include '/components/bypassblock.twig' %}
+        {% include '/components/nav.twig' %}
+        <main id="main" class="container">
+            <h1>Accessible Social Media Links</h1>
+            <article>
+                <p>
+                    Here I will guide you through the process of making social media links more accessible.
+                    We will start with the worst-case scenario and work towards a decent design.
+                </p>
+                <section>
+                    <h2>Plain Icons {% include '/components/practice.twig' with { practice: 'bad' } %}</h2>
+                    <p>
+                        The most minimal display of social media links can be achieved with icons.
+                        This has <strong>absolutely no accessibility</strong>, as the links will just be announced as "link".
+                    </p>
+                    {% include '/components/read.twig' with { audio: 'social-media-links/plainicons', text: 'plain icons example' } %}
+                    {% include '/components/example.twig' with { language: 'html', code:
+'My social media:
+<a href="https://github.com/RobertWesner" style="display: block;">
+    <i class="fa-brands fa-github fa-3x"></i>
+</a>
+<a href="https://reddit.com/u/RobertWesner" style="display: block;">
+    <i class="fa-brands fa-reddit fa-3x"></i>
+</a>'
+                        } %}
+                </section>
+                <section>
+                    <h2>Icons With Text {% include '/components/practice.twig' with { practice: 'ok' } %}</h2>
+                    <p>
+                        Icons with additional text have the benefit of being properly announced by a screen reader
+                        and allow people unfamiliar with the icon to still understand the targeted website's name.
+                    </p>
+                    <p>
+                        One problem with this is the lack of specificity. A person using a screen reader will only hear
+                        "link GitHub", which could as well just link to the main page of that website rather than a specific profile.
+                        A sighted person could infer by the above text ("My social media") that the links lead to your individual page.
+                    </p>
+                    {% include '/components/read.twig' with { audio: 'social-media-links/iconswithtext', text: 'icons with text example' } %}
+                    {% include '/components/example.twig' with { language: 'html', code:
+'My social media:
+<a href="https://github.com/RobertWesner" style="display: block;">
+    <i class="fa-brands fa-github"></i> GitHub
+</a>
+<a href="https://reddit.com/u/RobertWesner" style="display: block;">
+    <i class="fa-brands fa-reddit"></i> Reddit
+</a>'
+                        } %}
+                </section>
+                <section>
+                    <h2>Plain Icons With ARIA-Label {% include '/components/practice.twig' with { practice: 'good' } %}</h2>
+                    <p>
+                        Just adding an <code>aria-label</code> to each icon is a major step up from the complete lack of accessibility we previously had,
+                        and using more complete information like "My [platform] Profile" makes it clearer to which part of a site the link leads.
+                    </p>
+                    <p>
+                        This can be <i>enough</i> if your goal is to keep the minimal design but still might be less accessible
+                        even to sighted people having limited familiarity with these platforms and their icons.
+                        They may know what GitHub and Reddit <i>are</i> but may be unaware of how their <i>branding looks</i>.
+                    </p>
+                    {% include '/components/read.twig' with { audio: 'social-media-links/plainiconswitharialabel', text: 'plain icons with aria-label example' } %}
+                    {% include '/components/example.twig' with { language: 'html', code:
+'My social media:
+<a
+    href="https://github.com/RobertWesner"
+    style="display: block;"
+    aria-label="My GitHub profile"
+>
+    <i class="fa-brands fa-github fa-3x"></i>
+</a>
+<a
+    href="https://reddit.com/u/RobertWesner"
+    style="display: block;"
+    aria-label="My Reddit profile"
+>
+    <i class="fa-brands fa-reddit fa-3x"></i>
+</a>'
+                        } %}
+                </section>
+                <section>
+                    <h2>Icons With ARIA-Label And Text {% include '/components/practice.twig' with { practice: 'best' } %}</h2>
+                    <p>
+                        Combining the previous two examples, we both apply an <code>aria-label</code> and provide text representations of the icons.
+                    </p>
+                    {% include '/components/read.twig' with { audio: 'social-media-links/iconswitharialabelandtext', text: 'plain icons with aria-label example' } %}
+                    {% include '/components/example.twig' with { language: 'html', code:
+'My social media:
+<a
+    href="https://github.com/RobertWesner"
+    style="display: block;"
+    aria-label="My GitHub profile"
+>
+    <i class="fa-brands fa-github" aria-hidden="true"></i> GitHub
+</a>
+<a
+    href="https://reddit.com/u/RobertWesner"
+    style="display: block;"
+    aria-label="My Reddit profile"
+>
+    <i class="fa-brands fa-reddit" aria-hidden="true"></i> Reddit
+</a>'
+                        } %}
+                    {% include '/components/info.twig' with { content:
+                        '<div>
+    Altough my testing with modern systems and browsers has shown fontawesome icons not being announced incorrectly as they have an empty text content,
+    it is generally considered to be best practice to add <code>aria-hidden="true"</code> to all decorative icons.
+</div>
+<div>
+    Other icon libraries might rely on alphanumeric symbols (or other text characters) with custom fonts to be stylized.
+    Those would be pronounced as the actual character.
+    A very unlikely but still effective example would be Wingdings <span style="font-family: Wingdings">C</span> pronounced as the letter "C".
+</div>
+<div>
+    When in doubt, use the accessibility tree to view the text.
+</div>'
+                    } %}
+                </section>
+            </article>
+        </main>
+    </body>
+</html>

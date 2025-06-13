@@ -4,6 +4,7 @@
     text-transform: uppercase;
     vertical-align: middle;
     border-radius: 0.26rem;
+    white-space: nowrap;
 }
 
 .practice.bad {

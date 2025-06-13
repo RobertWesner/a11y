@@ -2,6 +2,8 @@ nav {
     background-color: #29292a;
     display: flex;
     justify-content: center;
+    position: sticky;
+    top: 0;
 }
 
 nav a, nav a:visited {

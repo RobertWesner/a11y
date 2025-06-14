@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
     <head>
-        {% include '/base/head.twig' with { title: 'Accessibility Basics' } %}
+        {% include '/base/head.twig' with { title: 'Accessibility Basics', description: 'The basics of web accessibility.' } %}
     </head>
     <body>
         {% include '/components/bypassblock.twig' %}
@@ -35,7 +35,7 @@
                     </ul>
                 </section>
                 <section>
-                    <h2>Why bother?</h2>
+                    <h2>Why Bother?</h2>
                     <p>
                         I recently stumbled upon the question of "do we really need to be accessible" in the context of a bicycle shop.
                         Since many people with different disabilities, like blindness, cannot engage in driving a bike directly,
@@ -64,7 +64,7 @@
                         accessibility is a must. But is this enough?
                         Really, accessibility should not just be something that needs to be <i>enforced</i>.
                         It should be considered at all points of design and development based on inclusivity,
-                        practiced to help others, not to fulfill legal requirements.
+                        practiced to help others, not simply to fulfill legal requirements.
                     </p>
                 </section>
                 <section>
@@ -90,16 +90,23 @@
                         <li>Use actual assistive technology to test your website, preferably with multiple tools.</li>
                         <li>Avoid creating your own elements with spans and divs if semantic HTML equivalents exist.</li>
                         <li>Always use the alt attribute on images, even if empty.</li>
+                        <li>Never use headings for styling. Only use them for their semantic meaning.</li>
                     </ul>
                 </section>
                 <section>
-                    <h2>Useful tools</h2>
+                    <h2>Useful Tools And Sites</h2>
                     <p>
                         These are third-party tools. They are not associated with this website or authors, and themselves may be removed or modified at any point.
                         Make sure to understand a tool, their data collection policies, and other concerns before using them.
                         Only install or use tools from trusted sources.
                     </p>
                     <ul>
+                        <li>
+                            Informational
+                            <ul>
+                                <li><a href="https://www.digitala11y.com/wai-aria-1-1-cheat-sheet/">Cheat sheet for ARIA attributes and roles</a></li>
+                            </ul>
+                        </li>
                         <li>
                             General tools
                             <ul>

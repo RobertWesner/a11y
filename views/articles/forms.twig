@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
     <head>
-        {% include '/base/head.twig' with { title: 'Accessible Forms' } %}
+        {% include '/base/head.twig' with { title: 'Accessible Forms', description: 'Creating forms that are accessible by all.' } %}
     </head>
     <body>
         {% include '/components/bypassblock.twig' %}
@@ -9,7 +9,144 @@
         <main id="main" class="container">
             <h1>Accessible Forms</h1>
             <article>
-                {% include '/components/wip.twig' %}
+                <section>
+                    <h2>The Worst Form Of Forms {% include '/components/practice.twig' with { practice: 'bad' } %}</h2>
+                    <p>Let's take a look at this example, which I consider to be the least accessible form you could design.</p>
+                    {% include '/components/read.twig' with { audio: 'forms/worstform', text: 'least accessible input form example' } %}
+                    {% include '/components/example.twig' with { language: 'html', code:
+'<b>Get in touch:</b>
+<form method="POST" action="/api/get-in-touch">
+    <input type="email" name="sender-email" placeholder="Email*" required>
+    <input type="text" name="message-subject" placeholder="Subject">
+    <textarea name="message-content" placeholder="Message*" required></textarea>
+    <span><input type="checkbox" name="expect-response"> I expect a response</span>
+    <button type="submit">
+        Send
+    </button>
+</form>'
+                    } %}
+                    <p>Now, why is this so bad?</p>
+                    <p>
+                        A rather big problem: our checkbox doesn't have a name at all.
+                        It's simply "checkbox unchecked"! How would a blind user be expected to know what the checkbox actually does?
+                    </p>
+                    <p>
+                        Not only is this less accessible to people reliant on screen readers, sighted folks don't fare much better.
+                        Imagine having limited short-term memory or anxiety needing to double-check all inputs before sending.
+                        You would not have any indication to see whether you mixed up the email and subject or not.
+                        It would be necessary to empty each field and retype it to see what parameter is being edited.
+                    </p>
+                    <p>
+                        On top of all that, the form itself is unnamed. Navigating to it doesn't create any narration,
+                        so the purpose of the form is only clear to sighted users.
+                    </p>
+                </section>
+                <section>
+                    <h2>Labels To The Rescue {% include '/components/practice.twig' with { practice: 'ok' } %}</h2>
+                    <p>
+                        A step towards improved accessibility will be the inclusion of input labels.
+                        HTML provides label elements to not just display and announce an associated text for an input
+                        but also extend the input's clickable area to that text, which can be a boon to
+                        people with motor skill problems.
+                    </p>
+                    {% include '/components/read.twig' with { audio: 'forms/labels', text: 'least accessible input form example' } %}
+                    {% include '/components/example.twig' with { language: 'html', code:
+'<b>Get in touch:</b>
+<form method="POST" action="/api/get-in-touch">
+    <label for="form2-email">
+        Email*
+    </label>
+    <input id="form2-email" type="email" name="sender-email" required>
+    <label for="form2-subject">
+        Subject
+    </label>
+    <input id="form2-subject" type="text" name="message-subject">
+    <label for="form2-message">
+        Message*
+    </label>
+    <textarea id="form2-message" name="message-content" required></textarea>
+    <label>
+        <input type="checkbox" name="expect-response"> I expect a response
+    </label>
+    <button type="submit">
+        Send
+    </button>
+</form>'
+                    } %}
+                </section>
+                <section>
+                    <h2>Stop Saying Asterisk {% include '/components/practice.twig' with { practice: 'good' } %}</h2>
+                    <p>
+                        You may have noticed our narrator always announcing the asterisk.
+                        Let's prevent that with <code>aria-hidden="true"</code> and actually give a proper meaning for them!
+                    </p>
+                    {% include '/components/read.twig' with { audio: 'forms/noasterisk', text: 'least accessible input form example' } %}
+                    {% include '/components/example.twig' with { language: 'html', code:
+'<b>Get in touch:</b>
+<form method="POST" action="/api/get-in-touch">
+    <label for="form3-email">
+        Email<span class="required-asterisk" aria-hidden="true">*</span>
+    </label>
+    <input id="form3-email" type="email" name="sender-email" required>
+    <label for="form3-subject">
+        Subject
+    </label>
+    <input id="form3-subject" type="text" name="message-subject">
+    <label for="form3-message">
+        Message<span class="required-asterisk" aria-hidden="true">*</span>
+    </label>
+    <textarea id="form3-message" name="message-content" required></textarea>
+    <label>
+        <input type="checkbox" name="expect-response"> I expect a response
+    </label>
+    <p aria-hidden="true">
+        <span class="required-asterisk" aria-hidden="true">*</span>
+        Inputs marked with an asterisk are required.
+    </p>
+    <button type="submit">
+        Send
+    </button>
+</form>'
+                    } %}
+                </section>
+                <section>
+                    <h2>Giving A Name To The Form {% include '/components/practice.twig' with { practice: 'best' } %}</h2>
+                    <p>
+                        Lastly, we want our form to have a name of its own. We can achieve that by adding an ARIA label
+                        or using <code>aria-labelledby</code>.
+                    </p>
+                    {% include '/components/read.twig' with { audio: 'forms/namedform', text: 'least accessible input form example' } %}
+                    {% include '/components/example.twig' with { language: 'html', code:
+'<b id="get-in-touch">Get in touch:</b>
+<form method="POST" action="/api/get-in-touch" aria-labelledby="get-in-touch">
+    <label for="form4-email">
+        Email<span class="required-asterisk" aria-hidden="true">*</span>
+    </label>
+    <input id="form4-email" type="email" name="sender-email" required>
+    <label for="form4-subject">
+        Subject
+    </label>
+    <input id="form4-subject" type="text" name="message-subject">
+    <label for="form4-message">
+        Message<span class="required-asterisk" aria-hidden="true">*</span>
+    </label>
+    <textarea id="form4-message" name="message-content" required></textarea>
+    <label>
+        <input type="checkbox" name="expect-response"> I expect a response
+    </label>
+    <p aria-hidden="true">
+        <span class="required-asterisk" aria-hidden="true">*</span>
+        Inputs marked with an asterisk are required.
+    </p>
+    <button type="submit">
+        Send
+    </button>
+</form>'
+                    } %}
+                    <p>
+                        Well done! Our form is now much more accessible.
+                    </p>
+                </section>
             </article>
         </main>
     </body>

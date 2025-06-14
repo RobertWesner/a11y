@@ -11,6 +11,8 @@
     </audio>
     <script>
         document.querySelector('#read-btn-{{ idSuffix }}').addEventListener('click', () => {
+            document.querySelectorAll('audio').forEach(audio => audio.pause());
+
             const audio = document.querySelector('#read-audio-{{ idSuffix }}');
             audio.currentTime = 0;
             audio.play();

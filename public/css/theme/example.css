@@ -29,3 +29,32 @@
         flex-direction: column;
     }
 }
+
+/* theming withing examples */
+.example .btn {
+    padding: 0.6rem;
+    background-color: dodgerblue;
+    color: white;
+    border-radius: 0.4rem;
+    cursor: pointer;
+    border: none;
+    font-size: 1rem;
+}
+
+.example .btn:hover, .example .btn:focus {
+    background-color: #5fb2ff;
+    color: white;
+}
+
+.example .btn:active {
+    background-color: #1a7bd4;
+    color: white;
+}
+
+.example form > * {
+    display: block;
+}
+
+.example form .required-asterisk {
+    color: red;
+}

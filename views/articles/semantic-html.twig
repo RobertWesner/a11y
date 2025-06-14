@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
     <head>
-        {% include '/base/head.twig' with { title: 'Semantic HTML' } %}
+        {% include '/base/head.twig' with { title: 'Semantic HTML', description: 'Using semantic HTML 5 to improve your websites accessibility.' } %}
     </head>
     <body>
         {% include '/components/bypassblock.twig' %}
@@ -9,7 +9,105 @@
         <main id="main" class="container">
             <h1>Semantic HTML</h1>
             <article>
-                {% include '/components/wip.twig' %}
+                <section>
+                    <h2>What Is Semantic HTML?</h2>
+                    <p>
+                        HTML 5 provides plenty of elements with implicit semantic meaning.
+                        Buttons imply clicking or activation leads to execution of an action.
+                        Links imply navigation on a page or between pages and websites.
+                    </p>
+                    <p>
+                        Almost every modern HTML element provides a specific meaning and should be used accordingly.
+                        Utilize <code>&lt;header&gt;</code> for headers, <code>&lt;footer&gt;</code> for footers,
+                        and importantly, use <code>&lt;nav&gt;</code> for any navigations on your page, not only the main one.
+                    </p>
+                    <p>
+                        Notable exceptions, elements without any semantic meaning, are: <code>&lt;div&gt;</code> and <code>&lt;span&gt;</code>.
+                        They do not necessarily need to be entirely avoided; instead, they should be used with appropriate role attributes when applicable
+                        and no semantic equivalent exists.
+                    </p>
+                </section>
+                <section>
+                    <h2>When To Use Semantic HTML</h2>
+                    <p>
+                        Always use existing HTML tags to convey meaning if appropriate elements exist.
+                        In our modern world, there is no downside to using semantic HTML, only advantages.
+                    </p>
+                </section>
+                <section>
+                    <h2>When Not To Use Semantic HTML</h2>
+                    <p>
+                        At best, if no semantic element exists for your use case or the function is entirely layout-based,
+                        divs and spans are appropriate.
+                        When implementing these elements, make sure to apply appropriate roles where possible.
+                    </p>
+                </section>
+                <section>
+                    <h2>Elements</h2>
+                    <p>
+                        I would like to point you to an excellent resource, the
+                        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements">MDN HTML elements reference</a>,
+                        which contains all currently supported elements and their use cases and meanings.
+                    </p>
+                </section>
+                <section>
+                    <h2>ARIA Roles</h2>
+                    <p>
+                        It is possible to give and change the semantic meaning of individual HTML elements with
+                        the role attribute.
+                        Prefer using existing semantic HTML elements over divs and spans with ARIA roles.
+                    </p>
+                    <p>
+                        Refrain from changing established semantic elements' roles.
+                        Do not give an anchor element the role button; rather, use button elements.
+                        If no appropriate HTML element exists for a role, do use divs and spans with a role attribute.
+                    </p>
+                    <p>
+                        A nice list with explanations can be found in this
+                        <a href="https://wpshout.com/wai-aria-roles/">article on ARIA roles</a>.
+                    </p>
+                </section>
+                <section>
+                    <h2>Examples</h2>
+                    <h3>on-click Actions</h3>
+                    <h4>Clickable Span {% include '/components/practice.twig' with { practice: 'bad' } %}</h4>
+                    <p>
+                        When making a span interactive, which should be avoided, it is necessary to also make it focusable to stay
+                        accessible with keyboard navigation.
+                    </p>
+                    {% include '/components/read.twig' with { audio: 'semantic-html/clickablespan', text: 'clickable span example' } %}
+                    {% include '/components/example.twig' with { language: 'html', code:
+'<span class="btn" tabindex="0">
+    Open File
+</span>'
+                    } %}
+                    <p>Of course, it is not yet announced as button, so we need to employ an ARIA role.</p>
+                    {% include '/components/read.twig' with { audio: 'semantic-html/clickablespanrole', text: 'clickable span with role button example' } %}
+                    {% include '/components/example.twig' with { language: 'html', code:
+'<span class="btn" tabindex="0" role="button">
+    Open File
+</span>'
+                    } %}
+                    <h4>Anchor buttons {% include '/components/practice.twig' with { practice: 'bad' } %}</h4>
+                    <p>
+                        A different way of creating buttons can be achieved with the misuse of an anchor tag.
+                        Anchors should be used to navigate pages, not to execute JavaScript!
+                    </p>
+                    {% include '/components/read.twig' with { audio: 'semantic-html/linkbutton', text: 'anchor link used as button example' } %}
+                    {% include '/components/example.twig' with { language: 'html', code:
+'<a class="btn" href="javascript:alert(\'Hello World\')">
+    Open File
+</a>'
+                    } %}
+                    <h4>Button {% include '/components/practice.twig' with { practice: 'best' } %}</h4>
+                    <p>Simply using the real button tag allows us to have full accessibility out of the box.</p>
+                    {% include '/components/read.twig' with { audio: 'semantic-html/button', text: 'simple button example' } %}
+                    {% include '/components/example.twig' with { language: 'html', code:
+'<button class="btn">
+    Open File
+</button>'
+                    } %}
+                </section>
             </article>
         </main>
     </body>

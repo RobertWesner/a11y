@@ -17,7 +17,8 @@
                     <h2>Plain Icons {% include '/components/practice.twig' with { practice: 'bad' } %}</h2>
                     <p>
                         The most minimal display of social media links can be achieved with icons.
-                        This has <strong>absolutely no accessibility</strong>, as the links will just be announced as "link".
+                        This has <strong>absolutely no accessibility</strong> to people relying on screen readers,
+                        as the links will just be announced as "link".
                     </p>
                     {% include '/components/read.twig' with { audio: 'social-media-links/plainicons', text: 'plain icons example' } %}
                     {% include '/components/example.twig' with { language: 'html', code:

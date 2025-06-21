@@ -1,22 +1,51 @@
 <div class="read">
     {% set idSuffix = audio|replace({ '/': '-' }) %}
     <label>
-        <span class="descriptor">Play Screen Reader:</span>
+        <span class="descriptor">Screen Reader</span>
         <button id="read-btn-{{ idSuffix }}" aria-label="Play {{ text }}">
             <i class="fa-solid fa-headphones"></i> Play
         </button>
     </label>
+    <div id="read-subtitles-{{ idSuffix }}" class="subtitles" aria-hidden="true"></div>
     <audio id="read-audio-{{ idSuffix }}">
         <source src="/mp3/{{ audio }}.mp3" type="audio/mpeg">
     </audio>
     <script>
-        document.querySelector('#read-btn-{{ idSuffix }}').addEventListener('click', () => {
-            document.querySelectorAll('audio').forEach(audio => audio.pause());
-
+        {
+            const subtitlesElement = document.querySelector('#read-subtitles-{{ idSuffix }}');
+            const button = document.querySelector('#read-btn-{{ idSuffix }}');
             const audio = document.querySelector('#read-audio-{{ idSuffix }}');
-            audio.currentTime = 0;
-            audio.play();
-        });
+
+            fetch('/mp3/{{ audio }}.txt')
+                .then(r => r.text())
+                .then(text => subtitlesElement.textContent = text);
+
+            button.displaySubtitles = () => {
+                subtitlesElement.setAttribute('data-playing', '');
+            };
+            button.hideSubtitles = () => {
+                subtitlesElement.removeAttribute('data-playing');
+            };
+            audio.addEventListener('ended', () => {
+                button.hideSubtitles();
+            });
+
+            button.addEventListener('click', () => {
+                if (audio.paused) {
+                    document.querySelectorAll('.read').forEach(allButton => {
+                        allButton.querySelector('audio').pause();
+                        allButton.querySelector('button').hideSubtitles();
+                    });
+
+                    audio.currentTime = 0;
+                    button.displaySubtitles();
+                    audio.play();
+                } else {
+                    button.hideSubtitles();
+                    audio.pause();
+                }
+            });
+        }
     </script>
     <noscript>
         Please enable JavaScript to play screen reader samples.

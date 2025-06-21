@@ -1,26 +1,44 @@
 .read {
     margin-bottom: 1rem;
+    padding: 1rem;
+    background-color: #ede8f4;
+    border: 1px solid #4c465a;
+    border-radius: 1rem;
 }
 
 .read button {
     padding: 0.2rem;
     font-size: 0.8rem;
-    background-color: #e7e7e7;
-    color: black;
-    border: 1px solid black;
+    background-color: #d8b0ff;
+    color: #240049;
+    border: 1px solid #240049;
     border-radius: 0.5rem;
+    float: right;
 }
 
 .read button:hover, .read button:focus {
-    background-color: #f1f1f1;
+    background-color: #e2c8ff;
 }
 
 .read button:active {
-    background-color: #dadada;
+    background-color: #ca93ff;
 }
 
 .read .descriptor {
     font-weight: 600;
     text-transform: uppercase;
     font-size: 0.8rem;
+}
+
+.subtitles {
+    font-weight: bold;
+    margin-top: 0.6rem;
+}
+
+.subtitles:not([data-playing]) {
+    visibility: hidden;
+}
+
+.subtitles:empty::after {
+    content: '...';
 }

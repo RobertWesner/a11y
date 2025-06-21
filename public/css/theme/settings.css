@@ -1,0 +1,41 @@
+#settings-button {
+    position: fixed;
+    top: 6rem;
+    right: 0.8rem;
+    border-radius: 50%;
+    z-index: 1;
+    background-color: #434343;
+    border: 1px solid #1b1b1b;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 3rem;
+    width: 3rem;
+}
+
+#settings-button > img {
+    height: 2rem;
+    width: 2rem;
+    margin: auto;
+}
+
+#settings-dialog {
+    max-width: 1000px;
+    width: auto;
+    border: 2px solid #2f2e2e;
+    border-radius: 1rem;
+    font-size: 1.2rem;
+}
+
+#settings-dialog .close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background-color: transparent;
+    color: #464646;
+    border: none;
+}
+
+#settings-dialog form label {
+    display: block;
+}

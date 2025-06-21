@@ -1,13 +1,19 @@
 @import '/font/montserrat/Montserrat.css';
-@import '/css/theme/example.css';
-@import '/css/theme/practice.css';
-@import '/css/theme/read.css';
-@import '/css/theme/infobox.css';
-@import '/css/theme/bypass-block.css';
-@import '/css/theme/nav.css';
+@import '/font/notosansmono/NotoSansMono.css';
+@import '/css/theme/example.css?3';
+@import '/css/theme/practice.css?3';
+@import '/css/theme/read.css?3';
+@import '/css/theme/infobox.css?3';
+@import '/css/theme/bypass-block.css?3';
+@import '/css/theme/nav.css?3';
+@import '/css/theme/settings.css?3';
 
 * {
     box-sizing: border-box;
+}
+
+input[type="checkbox"] {
+    vertical-align: middle;
 }
 
 :focus {

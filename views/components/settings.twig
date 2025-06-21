@@ -1,0 +1,95 @@
+<button id="settings-button" aria-label="Accessibility settings">
+    <img src="/favicon.ico" alt="">
+</button>
+<dialog id="settings-dialog">
+    <h1>Accessibility Settings</h1>
+    <form>
+        <label>
+            <input type="checkbox" data-setting="bigtext"> Bigger text
+        </label>
+        <label>
+            <input type="checkbox" data-setting="largelinespace"> Larger line spacing
+        </label>
+        <label>
+            <input type="checkbox" data-setting="80width"> Maximum 80 character width
+        </label>
+    </form>
+    <button class="close" aria-label="close-dialog"><i class="fa-solid fa-xmark fa-3x"></i></button>
+</dialog>
+<style id="settings-style"></style>
+<script>
+    {
+        const dialog = document.querySelector('#settings-dialog');
+        const form = dialog.querySelector('form');
+        const style = document.querySelector('#settings-style');
+
+        const applySettings = () => {
+            style.textContent = '';
+
+            if (localStorage.getItem('settings.bigtext') === 'true') {
+                style.textContent += `
+                    :root {
+                        font-size: 2rem;
+                    }
+
+                    input[type="checkbox"] {
+                        transform: scale(2);
+                    }
+
+                    input {
+                        line-height: 1rem;
+                    }
+
+                    input::placeholder, textarea::placeholder {
+                        font-size: 0.8rem;
+                    }
+                `;
+            }
+
+            if (localStorage.getItem('settings.largelinespace') === 'true') {
+                style.textContent += `
+                    :not(input):not(button):not(textarea) {
+                        line-height: 2rem;
+                    }
+
+                    p {
+                        line-height: 3rem;
+                    }
+                `;
+            }
+
+            if (localStorage.getItem('settings.80width') === 'true') {
+                style.textContent += `
+                    body {
+                        font-family: 'Noto Sans Mono', monospace;
+                    }
+
+                    p, li {
+                        max-width: 80ch;
+                    }
+                `;
+            }
+        };
+
+        document.querySelector('#settings-button').addEventListener('click', () => {
+            dialog.showModal();
+        });
+        dialog.querySelector('.close').addEventListener('click', () => {
+            dialog.close();
+        });
+
+        form.querySelectorAll('input').forEach(input => {
+            const settingKey = `settings.${input.dataset.setting}`;
+            const setting = localStorage.getItem(settingKey) === 'true' || false;
+            if (input.type === 'checkbox') {
+                input.checked = setting;
+                input.addEventListener('click', () => {
+                    localStorage.setItem(settingKey, input.checked ? 'true' : 'false');
+                    applySettings();
+                });
+            }
+        });
+
+        applySettings();
+    }
+</script>

@@ -1,12 +1,12 @@
 @import '/font/montserrat/Montserrat.css';
 @import '/font/notosansmono/NotoSansMono.css';
-@import '/css/theme/example.css?3';
-@import '/css/theme/practice.css?3';
-@import '/css/theme/read.css?3';
-@import '/css/theme/infobox.css?3';
-@import '/css/theme/bypass-block.css?3';
-@import '/css/theme/nav.css?3';
-@import '/css/theme/settings.css?3';
+@import '/css/theme/example.css?v4';
+@import '/css/theme/practice.css?v4';
+@import '/css/theme/read.css?v4';
+@import '/css/theme/infobox.css?v4';
+@import '/css/theme/bypass-block.css?v4';
+@import '/css/theme/nav.css?v4';
+@import '/css/theme/settings.css?v4';
 
 * {
     box-sizing: border-box;
@@ -36,6 +36,14 @@ body {
     font-size: 0;
     user-select: none;
     color: transparent;
+}
+
+/* Success Criterion 2.5.8 Target Size (Minimum) */
+button, a, input:not([type="hidden"]), textarea {
+    min-height: 24px;
+    min-width: 24px;
+    display: inline-block;
+    vertical-align: middle;
 }
 
 @media only screen and (max-width: 1400px) {

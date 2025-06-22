@@ -39,7 +39,7 @@ body {
 }
 
 /* Success Criterion 2.5.8 Target Size (Minimum) */
-button, a, input:not([type="hidden"]), textarea {
+button, a, input, textarea {
     min-height: 24px;
     min-width: 24px;
     display: inline-block;

@@ -11,6 +11,11 @@
             <h1>ARIA label and description</h1>
             <article>
                 <h2>ARIA labels</h2>
+                {% include '/components/info.twig' with { content:
+'<div>
+    Generic elements, such as div and span, <strong>must not</strong> have an <code>aria-label</code> or <code>aria-labelledby</code>.
+</div>'
+                } %}
                 <section>
                     <h3><code>aria-label</code></h3>
                     <p>Without the use of an ARIA label, the text content of an element is used to represent said element by a screen reader.</p>
@@ -53,7 +58,8 @@
                     } %}
                     {% include '/components/info.twig' with { content:
 '<div>
-    Generic elements, such as div and span, <strong>must not</strong> have an <code>aria-label</code> or <code>aria-labelledby</code>.
+    ARIA labels should always contain all word from the visible text when text is set.<br>
+    Do not create labels with entirely different content than visible text, rather expand on the text.
 </div>'
                     } %}
                 </section>

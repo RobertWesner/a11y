@@ -1,1 +1,1 @@
-save image button - save image with different filename button - load image button
+save image button - save image as button - load image button

@@ -15,9 +15,10 @@
 
 .example > .source {
     flex: 1;
-    overflow: auto;
+    overflow-x: hidden;
     margin: 0;
     border: 1px solid #c5c5c5;
+    white-space: break-spaces;
 }
 
 .example > .source code {

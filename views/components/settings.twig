@@ -5,7 +5,7 @@
     <h1>Accessibility Settings</h1>
     <form>
         <label>
-            <input type="checkbox" data-setting="bigtext"> Bigger text
+            <input type="checkbox" data-setting="bigtext"> Bigger text (200%)
         </label>
         <label>
             <input type="checkbox" data-setting="largelinespace"> Larger line spacing
@@ -42,6 +42,14 @@
 
                     input::placeholder, textarea::placeholder {
                         font-size: 0.8rem;
+                    }
+
+                    button {
+                        font-size: 1em;
+                    }
+
+                    .example {
+                        flex-direction: column;
                     }
                 `;
             }

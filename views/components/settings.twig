@@ -11,6 +11,9 @@
             <input type="checkbox" data-setting="largelinespace"> Larger line spacing
         </label>
         <label>
+            <input type="checkbox" data-setting="largewordspacing"> Larger word spacing
+        </label>
+        <label>
             <input type="checkbox" data-setting="80width"> Maximum 80 character width
         </label>
     </form>
@@ -62,6 +65,14 @@
 
                     p {
                         line-height: 3rem;
+                    }
+                `;
+            }
+
+            if (localStorage.getItem('settings.largewordspacing') === 'true') {
+                style.textContent += `
+                    :not(input):not(button):not(textarea) {
+                        word-spacing: 0.6ch;
                     }
                 `;
             }

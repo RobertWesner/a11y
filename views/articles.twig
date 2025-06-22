@@ -11,14 +11,16 @@
             <h1>Articles</h1>
             <ul>
                 {% for article in [
-                    { name: "Basics Of Accessibility", link: "basics" },
-                    { name: "Semantic HTML", link: "semantic-html" },
-                    { name: "Aria Labels And Descriptions", link: "aria/label-description" },
-                    { name: "Accessible Social Media Links", link: "social-media-links" },
-                    { name: "Accessible Forms", link: "forms" },
+                    { name: 'Basics Of Accessibility', link: 'basics' },
+                    { name: 'Advanced Accessibility', link: 'advanced' },
+                    { name: 'Semantic HTML', link: 'semantic-html' },
+                    { name: '<abbr title="Web Content Accessibility Guidelines">WCAG</abbr> 2.2', link: 'wcag' },
+                    { name: 'Aria Labels And Descriptions', link: 'aria/label-description' },
+                    { name: 'Accessible Social Media Links', link: 'social-media-links' },
+                    { name: 'Accessible Forms', link: 'forms' },
                 ] %}
                     <li>
-                        <a href="/articles/{{ article.link }}">{{ article.name }}</a>
+                        <a href="/articles/{{ article.link }}">{{ article.name|raw }}</a>
                     </li>
                 {% endfor %}
             </ul>

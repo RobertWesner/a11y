@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        {% include '/base/head.twig' with { title: 'Web Content Accessibility Guidelines', description: 'Exploring the Web Content Accessibility Guidelines.' } %}
+    </head>
+    <body>
+        {% include '/components/bypassblock.twig' %}
+        {% include '/components/settings.twig' %}
+        {% include '/components/nav.twig' %}
+        <main id="main" class="container">
+            <h1>Web Content Accessibility Guidelines 2.2</h1>
+            <p>This collection of articles will look at specific parts of the guidelines with examples.</p>
+            <section>
+                <ul>
+                    <li>
+                        <a href="/articles/wcag/2-4-1-bypass-blocks">
+                            2.4.1 Bypass Blocks
+                        </a>
+                    </li>
+                </ul>
+            </section>
+        </main>
+    </body>
+</html>

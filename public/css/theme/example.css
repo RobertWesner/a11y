@@ -59,3 +59,7 @@
 .example form .required-asterisk {
     color: red;
 }
+
+.example nav {
+    position: static;
+}

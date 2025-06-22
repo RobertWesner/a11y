@@ -1,6 +1,9 @@
 <button id="settings-button" aria-label="Accessibility settings">
     <img src="/favicon.ico" alt="">
 </button>
+<noscript>
+    <style>#settings-button { display: none; }</style>
+</noscript>
 <dialog id="settings-dialog">
     <h1>Accessibility Settings</h1>
     <form>
@@ -19,12 +22,11 @@
     </form>
     <button class="close" aria-label="close-dialog"><i class="fa-solid fa-xmark fa-3x"></i></button>
 </dialog>
-<style id="settings-style"></style>
 <script>
     {
         const dialog = document.querySelector('#settings-dialog');
-        const form = dialog.querySelector('form');
-        const style = document.querySelector('#settings-style');
+        const style = document.createElement('style');
+        document.head.appendChild(style);
 
         const applySettings = () => {
             style.textContent = '';
@@ -39,16 +41,13 @@
                         transform: scale(2);
                     }
 
-                    input {
+                    input, button {
+                        font-size: 1em;
                         line-height: 1rem;
                     }
 
                     input::placeholder, textarea::placeholder {
                         font-size: 0.8rem;
-                    }
-
-                    button {
-                        font-size: 1em;
                     }
 
                     .example {
@@ -71,7 +70,7 @@
 
             if (localStorage.getItem('settings.largewordspacing') === 'true') {
                 style.textContent += `
-                    :not(input):not(button):not(textarea) {
+                    * {
                         word-spacing: 0.6ch;
                     }
                 `;
@@ -97,7 +96,7 @@
             dialog.close();
         });
 
-        form.querySelectorAll('input').forEach(input => {
+        dialog.querySelector('form').querySelectorAll('input').forEach(input => {
             const settingKey = `settings.${input.dataset.setting}`;
             const setting = localStorage.getItem(settingKey) === 'true' || false;
             if (input.type === 'checkbox') {

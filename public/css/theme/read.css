@@ -39,5 +39,5 @@
 }
 
 .subtitles:empty::after {
-    content: '...';
+    content: '\00a0';
 }

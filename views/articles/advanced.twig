@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        {% include '/base/head.twig' with { title: 'Advanced Accessibility', description: 'More in-depth accessibility.' } %}
+    </head>
+    <body>
+        {% include '/components/bypassblock.twig' %}
+        {% include '/components/settings.twig' %}
+        {% include '/components/nav.twig' %}
+        <main id="main" class="container">
+            <h1>Advanced Accessibility</h1>
+            <article>
+                <h2>Practice Makes Good Enough</h2>
+                <p>
+                    No matter the amount of tutorials or introductory articles you read,
+                    the most reliable way of learning accessibility is practicing it.
+                </p>
+                <p>
+                    This website is (hopefully) meeting all <span aria-hidden="true">(A, AA, AAA)</span> of
+                    <abbr title="Web Content Accessibility Guidelines">WCAG</abbr> 2.2.
+                </p>
+                <p>
+                    To get to this point, I have read the entirety of
+                    <a href="https://www.w3.org/TR/WCAG22/"><abbr title="Web Content Accessibility Guidelines">WCAG</abbr> 2.2</a>, applied it where possible
+                    and strongly recommend you do too wherever you get the chance.
+                    Practice for this really is one of the best learning opportunities, as it deeply engages your thinking about the topic
+                    rather than just serving you information that may not be fully memorized.
+                </p>
+                <p>
+                    The goal of accessibility learning isn't knowing every success criterion by number; instead,
+                    it is noting and fixing accessibility issues based on recognition and intuition.<br>
+                    Accessibility is <b>not an academic problem</b>. It is very much practical in nature.
+                </p>
+            </article>
+            <article>
+                <h2>Advanced Resources</h2>
+                <p>
+                    Unfortunately, I have yet to find proper resources besides the <abbr title="Web Content Accessibility Guidelines">WCAG</abbr> 2.2 definitions.
+                    Most free information online seems to be limited to introductory or surface-level content.
+                </p>
+                <p>I will update this page with appropriate resources once I encounter them.</p>
+                <p>Notable links:</p>
+                <ul>
+                    <li><a href="https://www.w3.org/TR/WCAG22/">Web Content Accessibility Guidelines 2.2</a></li>
+                </ul>
+            </article>
+        </main>
+    </body>
+</html>

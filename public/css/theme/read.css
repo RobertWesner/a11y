@@ -31,12 +31,11 @@
 }
 
 .subtitles {
-    font-weight: bold;
     margin-top: 0.6rem;
 }
 
-.subtitles:not([data-playing]) {
-    visibility: hidden;
+.subtitles[data-playing] {
+    color: #4a008d;
 }
 
 .subtitles:empty::after {

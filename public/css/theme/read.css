@@ -41,3 +41,7 @@
 .subtitles:empty::after {
     content: '\00a0';
 }
+
+body[data-high-contrast] .read {
+    background-color: #490165;
+}

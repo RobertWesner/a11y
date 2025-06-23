@@ -1,12 +1,12 @@
 @import '/font/montserrat/Montserrat.css';
 @import '/font/notosansmono/NotoSansMono.css';
-@import '/css/theme/example.css?v5';
-@import '/css/theme/practice.css?v5';
-@import '/css/theme/read.css?v5';
-@import '/css/theme/infobox.css?v5';
-@import '/css/theme/skip-link.css?v5';
-@import '/css/theme/nav.css?v5';
-@import '/css/theme/settings.css?v5';
+@import '/css/theme/example.css?v6';
+@import '/css/theme/practice.css?v6';
+@import '/css/theme/read.css?v6';
+@import '/css/theme/infobox.css?v6';
+@import '/css/theme/skip-link.css?v6';
+@import '/css/theme/nav.css?v6';
+@import '/css/theme/settings.css?v6';
 
 * {
     box-sizing: border-box;
@@ -51,6 +51,23 @@ button, a, input, textarea {
     min-width: 24px;
     display: inline-block;
     vertical-align: middle;
+}
+
+body[data-high-contrast] {
+    background-color: black;
+    color: white;
+}
+
+body[data-high-contrast] a {
+    color: #89edff;
+}
+
+body[data-high-contrast] a:visited {
+    color: #bf91ff;
+}
+
+body[data-high-contrast] a:active {
+    color: #ff5151;
 }
 
 @media only screen and (max-width: 1400px) {

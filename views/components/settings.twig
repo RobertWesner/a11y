@@ -19,6 +19,9 @@
         <label>
             <input type="checkbox" data-setting="80width"> Maximum 80 character width
         </label>
+        <label>
+            <input type="checkbox" data-setting="highcontrast"> High contrast
+        </label>
     </form>
     <button class="close" aria-label="close-dialog"><i class="fa-solid fa-xmark fa-3x"></i></button>
 </dialog>
@@ -87,6 +90,15 @@
                         max-width: 80ch;
                     }
                 `;
+            }
+
+            const highlightJsLink = document.querySelector('#highlight-js-link');
+            if (localStorage.getItem('settings.highcontrast') === 'true') {
+                document.body.setAttribute('data-high-contrast', '');
+                highlightJsLink.href = '/node_modules/highlight.js/styles/a11y-dark.min.css';
+            } else {
+                document.body.removeAttribute('data-high-contrast');
+                highlightJsLink.href = '/node_modules/highlight.js/styles/a11y-light.min.css';
             }
         };
 

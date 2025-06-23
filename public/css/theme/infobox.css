@@ -15,3 +15,8 @@
     margin-bottom: 0.6rem;
     display: block;
 }
+
+body[data-high-contrast] .infobox {
+    background-color: #00406c;
+    color: white;
+}

@@ -63,3 +63,11 @@
 .example nav {
     position: static;
 }
+
+body[data-high-contrast] .example > .source code {
+    background-color: #141414;
+}
+
+body[data-high-contrast] .example > .preview, body[data-high-contrast] .example > .source {
+    border: 1px solid white;
+}

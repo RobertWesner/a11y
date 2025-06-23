@@ -1,4 +1,4 @@
-#bypass-block:not(:focus) {
+#skip-link:not(:focus) {
     font-size: 0;
     color: transparent;
     user-select: none;
@@ -6,7 +6,7 @@
     top: -100%;
 }
 
-#bypass-block:focus {
+#skip-link:focus {
     position: static;
     color: blue;
     background-color: #f6fff7;

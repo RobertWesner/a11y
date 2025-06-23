@@ -1,12 +1,12 @@
 @import '/font/montserrat/Montserrat.css';
 @import '/font/notosansmono/NotoSansMono.css';
-@import '/css/theme/example.css?v4';
-@import '/css/theme/practice.css?v4';
-@import '/css/theme/read.css?v4';
-@import '/css/theme/infobox.css?v4';
-@import '/css/theme/bypass-block.css?v4';
-@import '/css/theme/nav.css?v4';
-@import '/css/theme/settings.css?v4';
+@import '/css/theme/example.css?v5';
+@import '/css/theme/practice.css?v5';
+@import '/css/theme/read.css?v5';
+@import '/css/theme/infobox.css?v5';
+@import '/css/theme/skip-link.css?v5';
+@import '/css/theme/nav.css?v5';
+@import '/css/theme/settings.css?v5';
 
 * {
     box-sizing: border-box;

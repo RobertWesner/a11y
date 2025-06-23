@@ -1,20 +1,22 @@
 <!doctype html>
 <html lang="en">
     <head>
-        {% include '/base/head.twig' with { title: 'Bypass Blocks', description: 'Implementing bypass blocks.' } %}
+        {% include '/base/head.twig' with { title: 'Bypass Blocks', description: 'Implementing skip links to bypass blocks of content.' } %}
     </head>
     <body>
-        {% include '/components/bypassblock.twig' %}
+        {% include '/components/skiplink.twig' %}
         {% include '/components/settings.twig' %}
         {% include '/components/nav.twig' %}
         <main id="main" class="container">
             <h1>Bypass Blocks</h1>
             <article>
                 <section>
-                    <h2>No Bypass Blocks {% include '/components/practice.twig' with { practice: 'bad' } %}</h2>
+                    <h2>No Skip Link {% include '/components/practice.twig' with { practice: 'bad' } %}</h2>
                     <p>
-                        Without a bypass block, keyboard users are required to pass through reoccurring focusable elements
-                        like navigations on every page.
+                        Skip links, also known as bypass links, are used to bypass content that repeats on multiple websites
+                        like navigation.
+                        Without a skip link, keyboard users are required to pass through reoccurring focusable elements
+                        on every page.
                     </p>
                     {% include '/components/example.twig' with { language: 'html', code:
 '<nav aria-label="example 1">
@@ -30,16 +32,20 @@
                     } %}
                 </section>
                 <section>
-                    <h2>With Bypass Block {% include '/components/practice.twig' with { practice: 'ok' } %}</h2>
+                    <h2>With Skip Link {% include '/components/practice.twig' with { practice: 'ok' } %}</h2>
                     <p>
-                        Using a bypass block, users reliant on keyboard navigation can simply skip to the main content
+                        Using a skip link, users reliant on keyboard navigation can simply skip to the main content
                         of the webpage without having to manually move through navigation and other repeated elements.
                     </p>
                     <p>
                         To achieve the jump, we need to give our <code>main</code>-Element or similar node an ID,
-                        create a bypass block anchor element as the first focusable of the website, and
-                        set the ID, prefixed with a pound symbol <code aria-hidden="true">#</code>,
-                        as the href of the bypass block.
+                        create an appropriate anchor element as the first focusable of the website, and
+                        set the ID, prefixed with a pound symbol (<code aria-hidden="true">#</code>),
+                        as the href of the skip link anchor.
+                    </p>
+                    <p aria-hidden="true">
+                        Example:<br>
+                        To link to your <code>main</code> with <code>id="content"</code> you should use <code>#content</code>.
                     </p>
                     {% include '/components/example.twig' with { language: 'html', code:
 '<a href="#example-2">
@@ -58,22 +64,24 @@
                     } %}
                 </section>
                 <section>
-                    <h2>Visually Hidden Bypass Block {% include '/components/practice.twig' with { practice: 'best' } %}</h2>
+                    <h2>Visually Hidden Skip Link {% include '/components/practice.twig' with { practice: 'best' } %}</h2>
                     <p>
-                        To not visibly interfere with our layout, we can make the bypass block <strong>visually</strong> hidden
-                        by default and clearly visible when focused.
+                        To not visibly interfere with our layout, we can make the skip link <strong>visually</strong> hidden
+                        by default and clearly visible when focused. Make sure to not use
+                        <code>display: none</code>, <code>visibility: hidden</code> or the <code>hidden</code> attribute
+                        as they make the element non-focusable and remove it from the accessibility tree.
                     </p>
                     <p>
                         Do try navigating with the tab key to see the block now or <button id="simulate-focus">simulate focus</button>.
                     </p>
                     <script>
                         document.querySelector('#simulate-focus').addEventListener('click', () => {
-                            document.querySelector('#bypass-block-3').focus();
+                            document.querySelector('#skip-link-3').focus();
                         });
                     </script>
                     {% include '/components/example.twig' with { language: 'html', code:
 '<style>
-    #bypass-block-3:not(:focus) {
+    #skip-link-3:not(:focus) {
         /* make the block invisible */
         font-size: 0;
         color: transparent;
@@ -84,7 +92,7 @@
         top: -100%;
     }
 
-    #bypass-block-3:focus {
+    #skip-link-3:focus {
         /* revert to static display */
         position: static;
         /* apply more styling to make it more visible */
@@ -95,7 +103,7 @@
         text-align: center;
     }
 </style>
-<a id="bypass-block-3" href="#example-3">
+<a id="skip-link-3" href="#example-3">
     Skip to main content.
 </a>
 <nav aria-label="example 3">

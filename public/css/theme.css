@@ -32,6 +32,13 @@ body {
     margin: 0 auto;
 }
 
+.sample {
+    border: 3px solid #b6b6b6;
+    border-radius: 1rem;
+    padding: 1rem;
+    max-width: 800px;
+}
+
 .visually-hidden {
     font-size: 0;
     user-select: none;

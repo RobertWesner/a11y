@@ -12,14 +12,41 @@
             <p>
                 A collection of notes, articles, and opinions on the topic of accessibility ranging from basic to in-depth.
             </p>
-            <p>
-                This website aims to meet all A and AA in addition to most AAA guidelines of
-                <abbr title="Web Content Accessibility Guidelines">WCAG</abbr> 2.2,
-                since information on accessibility should be available to all.
-                Make sure to check the accessibility settings button to the top right to customize your experience.
-                <noscript><strong>Accessibility settings and screen reader samples require the use of JavaScript. Please enable it.</strong></noscript>
-            </p>
-            <p>To get an exhaustive list of content, visit the <a href="/articles/">articles</a> page.</p>
+            <section>
+                <h2>About</h2>
+                <p>
+                    This website aims to meet all A and AA in addition to most AAA guidelines of
+                    <abbr title="Web Content Accessibility Guidelines">WCAG</abbr> 2.2,
+                    since information on accessibility should be available to all.
+                    Make sure to check the accessibility settings button to the top right to customize your experience.
+                    <noscript><strong>Accessibility settings and screen reader samples require the use of JavaScript. Please enable it.</strong></noscript>
+                </p>
+                <p>Visit the <a href="/articles/">articles</a> page for an exhaustive list of content.</p>
+            </section>
+            <section>
+                <h2>Screen Reader Integration</h2>
+                <p>
+                    None of the web resources and tutorials on accessibility I could find provided actual samples
+                    of screen readers next to their example content. I find it very helpful to get an understanding of how
+                    screen readers work with a simple click. Just being able to listen without setting up your own.
+                </p>
+                <p>Below, you will see an example of the screen reader widget:</p>
+                <div class="sample">
+                    {% include '/components/read.twig' with { audio: 'label-description/imagewitharialabel', text: 'no aria label example' } %}
+                    {% include '/components/example.twig' with { language: 'html', code:
+                        'Image:
+<button aria-label="Save image">
+    Save
+</button>
+<button aria-label="Save image as">
+    Save As
+</button>
+<button aria-label="Load image">
+    Load
+</button>'
+                    } %}
+                </div>
+            </section>
         </main>
     </body>
 </html>
